@@ -1,0 +1,27 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t alvaro/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+    - docker run alvaro/react-test npm test -- --coverage
+
+after_success:
+    - docker build -t alvaro/multi-client -f ./client
+    - docker build -t alvaro/multi-nginx -f ./nginx
+    - docker build -t alvaro/multi-server -f ./server
+    - docker build -t alvaro/multi-worker -f ./worker
+
+#login to travis
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+#push to docker hub
+    - docker push alvaro/multi-client
+    - docker push alvaro/multi-nginx
+    - docker push alvaro/multi-server
+    - docker push alvaro/multi-worker
+    
+
+

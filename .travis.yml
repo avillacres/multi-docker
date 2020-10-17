@@ -19,7 +19,6 @@ after_success:
 
 #push to docker hub
     - docker push avillacres/multi-client
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push avillacres/multi-nginx
     - docker push avillacres/multi-server
     - docker push avillacres/multi-worker

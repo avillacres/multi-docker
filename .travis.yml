@@ -18,10 +18,10 @@ after_success:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 #push to docker hub
-    - docker push avillacres/multi-client
-    - docker push avillacres/multi-nginx
-    - docker push avillacres/multi-server
-    - docker push avillacres/multi-worker
+    - docker push avillacres/multi-client:version1
+    - docker push avillacres/multi-nginx:version1
+    - docker push avillacres/multi-server:version1
+    - docker push avillacres/multi-worker:version1
 
 deploy:
     provider: elasticbeanstalk

@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "client",
-            "image": "avillacres/multi-client",
+            "image": "avillacres/multi-client:version1",
             "hostname": "client",
             "essential": false,
             "memory": 128
@@ -11,21 +11,21 @@
         },
         {
             "name": "server",
-            "image": "avillacres/multi-server",
+            "image": "avillacres/multi-server:version1",
             "hostname": "api",
             "essential": false,
             "memory": 128
         },
         {
             "name": "worker",
-            "image": "avillacres/multi-worker",
+            "image": "avillacres/multi-worker:version1",
             "hostname": "worker",
             "essential": false,
             "memory": 128
         },
         {
             "name": "nginx",
-            "image": "avillacres/multi-nginx",
+            "image": "avillacres/multi-nginx:version1",
             "hostname": "nginx",
             "essential": true,
             "portMappings": [

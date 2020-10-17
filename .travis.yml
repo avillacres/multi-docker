@@ -19,20 +19,17 @@ after_success:
 
 #push to docker hub
     - docker push avillacres/multi-client
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push avillacres/multi-nginx
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push avillacres/multi-server
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push avillacres/multi-worker
 
 deploy:
     provider: elasticbeanstalk
-    region: us-east-2
-    app: multi-docker
-    env: MultiDocker-env
-    bucket_name: elasticbeanstalk-us-east-2-928850819422
-    bucket_path: docker-multi
+    region: 'us-east-2'
+    app: 'multi-docker'
+    env: 'MultiDocker-env'
+    bucket_name: 'elasticbeanstalk-us-east-2-928850819422'
+    bucket_path: 'docker-multi'
     on:
         branch: master
     access_key_id: $AWS_ACCESS_KEY
